@@ -144,7 +144,8 @@ class tech:
                     if i not in new_function:
                         #first invoke set the pso optimzier
                         parameters = [self.pso_size,self.kat_time, self.st_lambda]
-                        new_function[i]= pso.PSO(parameters,self.server_pair,function_name,self.ci_avg,self.carbon_intensity[j],invoke_interval[i][j-self.window_size])
+                        new_function[i] = pso.TabuSearch( parameters, self.server_pair, function_name, self.ci_avg, self.carbon_intensity[j], invoke_interval[i][j - self.window_size])
+                        #new_function[i]= pso.PSO(parameters,self.server_pair,function_name,self.ci_avg,self.carbon_intensity[j],invoke_interval[i][j-self.window_size])
                         a,_ = new_function[i].main(self.carbon_intensity[j],invoke_interval[i][j-self.window_size])
                         decision = a
                         ka_loc = int(decision[0])
